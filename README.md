@@ -55,4 +55,29 @@ Abra seu navegador e vá para http://localhost:5000 para ver o swagger da aplica
 É possivel testar as rotas pelo swagger da aplicação. Para visualização dos relatorios sobre os feedbacks é possivel visualizar as paginas HTML geras de forma mais agradavel pelas rotas http://localhost:5000/report para todos os feedbacks ou:
 - Clicando em um id na pagina http://localhost:5000/report para o feedback espacifico
 - Acessando http://localhost:5000/feedback/< id_feedback >
+### Exemplo de requisição na API
+É possivel testar a rota POST utilizando o exemplo abaixo ou exemplos semelhantes que sigam a mesma estrutura.
+Exemplo de requisição:
+```json
+POST /feedbacks
+Content-Type: application/json
 
+{
+  "id": "4042f20a-45f4-4647-8050-139ac16f610b",
+  "feedback": "Gosto muito de usar o Alumind! Está me ajudando bastante em relação a alguns problemas que tenho. Só queria que houvesse uma forma mais fácil de eu mesmo realizar a edição do meu perfil dentro da minha conta"
+}
+```
+
+Exemplo de resposta:
+```json
+{
+  "id": "4042f20a-45f4-4647-8050-139ac16f610b",
+  "sentiment": "POSITIVO",
+  "requested_features": [
+    {
+      "code": "EDITAR_PERFIL",
+      "reason": "O usuário gostaria de realizar a edição do próprio perfil"
+    }
+  ]
+}
+```
