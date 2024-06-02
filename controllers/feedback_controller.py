@@ -43,4 +43,8 @@ class FeedbackController:
     def generate_all_feedbacks_report(self):
         feedbacks = self._get_feedbacks()
         return generate_report(feedbacks)
-        
+    def feedback_detail(self, feedback_id):
+        feedback = Feedback.query.get(feedback_id)
+        if feedback is None:
+            return jsonify({"error": "Feedback not found"}), 404
+        return feedback
