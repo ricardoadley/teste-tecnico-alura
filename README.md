@@ -6,4 +6,51 @@ A AluMind é uma startup que oferece um aplicativo focado em bem-estar e saúde 
 
 Neste desafio, você será responsável por criar uma aplicação que analise os feedbacks dos usuários, classifique-os com base no sentimento expresso e liste as possíveis melhorias sugeridas.
 
+Veja mais sobre o desafio em: desafio.md
+## Como executar 
+### Pré-requisitos
+Antes de começar, verifique se você tem os seguintes requisitos instalados:
+
+Python (versão 3.10)
+
+### Instalação
+Clone o repositório do GitHub:
+
+```bash
+git clone https://github.com/ricardoadley/teste-tecnico-alura.git
+cd teste-tecnico-alura
+```
+Crie um ambiente virtual (recomendado):
+
+```bash
+python -m venv venv
+```
+Ative o ambiente virtual (Windows):
+
+```bash
+venv\Scripts\activate
+```
+Para sistemas não Windows (Linux/macOS):
+
+```bash
+source venv/bin/activate
+```
+### Instale as dependências:
+
+```bash
+pip install -r requirements.txt
+```
+### Executando o Projeto
+Execute o aplicativo Flask:
+
+```bash
+python main.py
+```
+
+Abra seu navegador e vá para http://localhost:5000 para ver o swagger da aplicação em funcionamento.
+
+## Observando o Funcionamento
+É possivel testar as rotas pelo swagger da aplicação. Para visualização dos relatorios sobre os feedbacks é possivel visualizar as paginas HTML geras de forma mais agradavel pelas rotas http://localhost:5000/report para todos os feedbacks ou:
+- Clicando em um id na pagina http://localhost:5000/report para o feedback espacifico
+- Acessando http://localhost:5000/feedback/< id_feedback >
 
