@@ -45,7 +45,12 @@ class Report(Resource):
         feedbacks, positive_percentage, sorted_features = feedback_controller.generate_all_feedbacks_report()
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template('report.html', feedbacks=feedbacks, positive_percentage=positive_percentage, sorted_features=sorted_features),200,headers)
-
+@api.route('/feedback/<feedback_id>', methods=['GET'])
+class FeedbackDetail(Resource):
+    def get(self, feedback_id):
+        feedback = feedback_controller.feedback_detail(feedback_id)
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('feedback.html', feedback=feedback),200,headers)
 if __name__ == "__main__":
     #logging.info(f"Application started at port {5000}")
     #app.run(debug= '--debug' in sys.argv, port = PORT, host= DEPLOY_URL)
