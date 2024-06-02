@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Detalhes do Feedback</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Detalhes do Feedback</h1>
+        <div class="my-4">
+            <p><strong>ID:</strong> {{ feedback.id }}</p>
+            <p><strong>Feedback:</strong> {{ feedback.feedback_text }}</p>
+            <p><strong>Sentiment:</strong> {{ feedback.sentiment }}</p>
+            <p><strong>Requested Features:</strong></p>
+            {% if feedback.requested_features %}
+            <ul>
+                {% for feature in feedback.requested_features %}
+                <li>{{ feature.code }}: {{ feature.reason }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Sem features solicitadas</p>
+            {% endif %}
+        </div>
+        <a href="/report" class="btn btn-primary">Retornar para report geral</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
