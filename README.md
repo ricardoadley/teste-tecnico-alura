@@ -9,10 +9,12 @@ Neste desafio, você será responsável por criar uma aplicação que analise os
 Veja mais sobre o desafio em: desafio.md
 ## Como executar 
 ### Pré-requisitos
-Antes de começar, verifique se você tem os seguintes requisitos instalados:
+Antes de começar, verifique se você tem os seguintes requisitos:
 
-Python (versão 3.10)
+- Python (versão 3.10) instalado
 
+- Para o funcionamento da aplicação é necessario uma chave para a API do GPT, ela deve ser definida em `GPT_API_KEY` no .env .
+Como obter uma chave para a API do GPT: https://platform.openai.com/docs/api-reference/authentication
 ### Instalação
 Clone o repositório do GitHub:
 
