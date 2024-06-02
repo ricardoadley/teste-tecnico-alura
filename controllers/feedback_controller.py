@@ -4,7 +4,7 @@ import json
 from flask import Response, jsonify
 
 from models.feedback import Feedback
-from services.feedback_service import analyze_feedback
+from services.feedback_service import analyze_feedback, generate_report
 
 
 class FeedbackController:
@@ -37,3 +37,14 @@ class FeedbackController:
             "requested_features": requested_features
         }
         return Response(json.dumps(response), status=200, mimetype='application/json')
+    def _get_feedbacks(self):
+        feedbacks = Feedback.query.all()
+        return feedbacks
+    def generate_all_feedbacks_report(self):
+        feedbacks = self._get_feedbacks()
+        return generate_report(feedbacks)
+    def feedback_detail(self, feedback_id):
+        feedback = Feedback.query.get(feedback_id)
+        if feedback is None:
+            return jsonify({"error": "Feedback not found"}), 404
+        return feedback
