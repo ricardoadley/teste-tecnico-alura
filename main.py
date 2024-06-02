@@ -11,9 +11,6 @@ from sqlalchemy_utils import create_database, database_exists
 from controllers import FeedbackController
 from models.feedback import db
 
-#mail = Mail(app)
-
-
 app = Flask(__name__)
 app.config.from_pyfile('utils\config.py')
 api = Api(app)
@@ -34,6 +31,9 @@ feedback_model = api.model('FeedBackModel', {
 class FeedbackList(Resource):
     @api.expect(feedback_model)
     def post(self):
+        """
+        Recebe um feedback e retorna a sua analise. Peristindo o feedback no banco de dados.
+        """
         return feedback_controller.catch_feedback(request)
 
 @api.route('/report')
@@ -49,6 +49,16 @@ class Report(Resource):
 @api.route('/feedback/<feedback_id>', methods=['GET'])
 class FeedbackDetail(Resource):
     def get(self, feedback_id):
+        """
+        Obtém os detalhes de um feedback e retorna uma resposta HTTP com o template 'feedback.html'.
+
+        Parâmetros:
+        - feedback_id (int): O ID do feedback a ser obtido.
+
+        Retorna:
+        - response: Uma resposta HTTP com o template 'feedback.html' contendo os detalhes do feedback.
+        """
+        
         feedback = feedback_controller.feedback_detail(feedback_id)
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template('feedback.html', feedback=feedback),200,headers)
