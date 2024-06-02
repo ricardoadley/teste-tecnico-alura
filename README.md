@@ -81,3 +81,5 @@ Exemplo de resposta:
   ]
 }
 ```
+## Sobre o desenvolvimento
+O código referente ao desenvolvimento de cada feature pode ser observado separadamente por meio das branches do repositório.
