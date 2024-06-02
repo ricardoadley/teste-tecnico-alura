@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Report Geral dos Feedbacks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Feedbacks</h1>
+        <div class="my-4">
+            <h2>Porcentagem de Feedbacks Positivos</h2>
+            <p>{{ positive_percentage }}%</p>
+        </div>
+        <div class="my-4">
+            <h2>Features mais requisitadas</h2>
+            <ul>
+                {% for feature, count in sorted_features %}
+                <li>{{ feature }}: {{ count }} requests</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="my-4">
+            <h2>Feedbacks</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Feedback</th>
+                        <th>Sentiment</th>
+                        <th>Requested Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for feedback in feedbacks %}
+                    <tr>
+                        <td><a href="/feedback/{{ feedback.id }}">{{ feedback.id }}</a></td>
+                        <td>{{ feedback.feedback_text }}</td>
+                        <td>{{ feedback.sentiment }}</td>
+                        <td>
+                            {% if feedback.requested_features %}
+                            <ul>
+                                {% for feature in feedback.requested_features %}
+                                <li>{{ feature.code }}: {{ feature.reason }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <p>Sem Features Requisitadas</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
