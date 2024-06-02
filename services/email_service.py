@@ -6,6 +6,17 @@ from utils.config import FROM_EMAIL, FROM_PASSWORD
 
 
 def send_email(subject, body, to_emails):
+    """
+    Envia um email para os endereços de email especificados.
+
+    Parâmetros:
+    - subject (str): O assunto do email.
+    - body (str): O corpo do email.
+    - to_emails (list): Uma lista de endereços de email para os quais o email será enviado.
+
+    Retorna:
+    Nenhum valor de retorno.
+    """
     from_email = FROM_EMAIL
     from_password = FROM_PASSWORD
 
