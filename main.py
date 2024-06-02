@@ -1,9 +1,10 @@
 
 import logging
 import sys
+import time
 
-from flask import Flask, jsonify, make_response, render_template, request
-from flask_mail import Mail
+import schedule
+from flask import Flask, make_response, render_template, request
 from flask_restx import Api, Resource, fields
 from sqlalchemy_utils import create_database, database_exists
 
@@ -54,3 +55,6 @@ class FeedbackDetail(Resource):
 if __name__ == "__main__":
     logging.info(f"Application started at port {5000}")
     app.run(debug= '--debug' in sys.argv, port = 5000)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
