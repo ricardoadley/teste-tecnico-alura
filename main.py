@@ -52,7 +52,5 @@ class FeedbackDetail(Resource):
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template('feedback.html', feedback=feedback),200,headers)
 if __name__ == "__main__":
-    #logging.info(f"Application started at port {5000}")
-    #app.run(debug= '--debug' in sys.argv, port = PORT, host= DEPLOY_URL)
     logging.info(f"Application started at port {5000}")
-    app.run(debug= '--debug' in sys.argv, port = 5000, host= "0.0.0.0")
+    app.run(debug= '--debug' in sys.argv, port = 5000)
